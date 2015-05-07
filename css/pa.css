@@ -1,0 +1,2101 @@
+/* =======================================
+
+DataRiver Dashboards
+Copyright 2014 Equation Consulting, Inc.
+Contributors: @grgortiz, @srafferty, @nfiscus
+Proudly built in Utah by the DataRiver Team
+
+Contents:
+	1. Module Structure
+	2. Tables
+	3. Meaningful Use Custom Styles
+	4. New Dashboard Creation
+	5. Buttons
+	6. Carousel
+	7. Bootstrap Overides
+	8. Nav
+	9. Chosen Overides
+	10. Inputs
+    11. Live Dashboard Editing
+======================================= */
+
+
+/* =======================================
+
+	1. Module Structure
+
+======================================= */
+
+.physician_dashboard .header_section {
+    width:auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:10px 20px;
+    float:left;
+    border-right:1px solid #eee;
+}
+.physician_dashboard .header_section h6 {
+    font-size:11px;
+    margin:0;
+    padding:0;
+    text-transform:uppercase;
+    font-weight: normal;
+    color:#999;
+}
+.physician_dashboard .header_section p {
+    font-size:14px;
+    margin:0;
+    padding:0;
+    font-weight: bold;
+    color:#555;
+}
+.physician_dashboard .section {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.physician_dashboard .section h5 {
+    padding:0;
+    margin:0;
+    font-size: 20px;
+    font-weight:bold;
+    color: #555;
+    line-height:1.2em;
+}
+.physician_dashboard .span12 .fa-chevron-right {
+    display:none;
+}
+.physician_dashboard .span12 .fa-chevron-left {
+    display:inline;
+}
+.physician_dashboard .span6 .fa-chevron-left {
+    display:none;
+}
+.physician_dashboard .span6 .fa-chevron-right {
+    display:inline;
+}
+.physician_dashboard .condensed h1 {
+    font-weight:normal;
+    color:#40667a;
+    padding:30px 20px 0 20px;
+    line-height: 25px;
+    float:left;
+}
+.physician_dashboard .condensed h1 span {
+    font-weight:normal;
+    color:#777;
+    font-size: 11px;
+}
+.physician_dashboard .condensed .percent {
+    float:left;
+    border-top:1px solid #ddd;
+    padding:20px 0;
+    width:33.3%;
+}
+.physician_dashboard .condensed .percent h5 {
+    font-size:15px;
+    color:#777;
+    padding:0 20px;
+}
+.physician_dashboard .condensed .percent p {
+    font-size:11px;
+    color:#777;
+    padding:0 20px;
+    margin:0;
+}
+.physician_dashboard .condensed h5.percent_up {
+    color: #A1C785;
+}
+.physician_dashboard .condensed h5.percent_down {
+    color: #C87474;
+}
+.physician_dashboard .condensed h5.percent_up:after {
+    content:"â–²";
+}
+.physician_dashboard .condensed h5.percent_down:after {
+    content:"â–¼";
+}
+
+/* =======================================
+
+	2. Tables
+
+======================================= */
+
+.physician_dashboard .section .summaryTable tr.head {
+    background-color: #fff;
+    background-image: none;
+}
+.physician_dashboard .section .summaryTable tr.head td,
+.physician_dashboard .section .summaryTable thead th {
+    padding: 10px 5px;
+    font-weight: normal;
+    color: #777;
+    text-align: right;
+    text-transform: none;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; /* 'Open Sans',sans-serif; */
+    font-size: 12px;
+}
+.physician_dashboard .section .summaryTable tr td {
+    font-size: 12px;
+    color: #777;
+}
+.physician_dashboard .section .summaryTable tr td.nowrap {
+    white-space: nowrap;
+}
+#IncomeStatement_table tbody tr td {
+    padding:0px;
+}
+#IncomeStatement_table tbody tr td.border-right,
+#IncomeStatement_table tbody tr td.border-right,
+.physician_dashboard .section .summaryTable tr td.border-right,
+.physician_dashboard .section .summaryTable tr th.border-right {
+    padding-right: 20px;
+}
+.physician_dashboard .section .summaryTable tr td.indent {
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight:normal;
+    color: #777;
+}
+.physician_dashboard .section .summaryTable tr.subtotal {
+    font-weight:bold;
+    border-top:2px solid #999;
+}
+.physician_dashboard .section .summaryTable tr.grandtotal {
+    font-weight:bold;
+    border-top:2px solid #999;
+    border-bottom:5px double #999;
+}
+.physician_dashboard .section .summaryTable tr.subtotal td.indent,
+.physician_dashboard .section .summaryTable tr.subtotal td {
+    font-weight:bold;
+    background:#fff;
+}
+.physician_dashboard .section .summaryTable tr.grandtotal td.indent,
+.physician_dashboard .section .summaryTable tr.grandtotal td {
+    font-weight:bold;
+    background:#fff;
+}
+.physician_dashboard .section .summaryTable tr td.percent_up {
+    color: #A1C785;
+}
+.physician_dashboard .section .summaryTable tr td.percent_down {
+    color: #C87474;
+}
+.physician_dashboard .section .summaryTable tr td.percent_up:after {
+    content:"â–²";
+}
+.physician_dashboard .section .summaryTable tr td.percent_down:after {
+    content:"â–¼";
+}
+.physician_dashboard .section .summaryTable tr td.percent_up_bad {
+    color: #C87474;
+}
+.physician_dashboard .section .summaryTable tr td.percent_down_bad {
+    color: #A1C785;
+}
+.physician_dashboard .section .summaryTable tr td.percent_up_bad:after {
+    content:"â–¼";
+}
+.physician_dashboard .section .summaryTable tr td.percent_down_bad:after {
+    content:"â–²";
+}
+.physician_dashboard .module_header {
+    width:100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    background:#f5f5f5;
+    border-bottom:#ddd 1px solid;
+}
+.physician_dashboard .module_header div h3 {
+    font-size:14px;
+    text-align:center;
+    line-height: 18px;
+    padding:10px 0px;
+    float:left;
+    font-weight:bold;
+}
+.physician_dashboard .module_header div h4 {
+    font-size:12px;
+    font-weight:normal;
+    text-align:center;
+    line-height: 15px;
+    padding:10px 0px;
+    color: #777;
+}
+.physician_dashboard .module_subHeader {
+    width:100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    background:#f9f9f9;
+    border-bottom:#eee 1px solid;
+    padding:2px 0 10px 20px;;
+}
+
+.physician_dashboard .module_subHeader h5.breakoutName {
+    font-size:11px;
+    line-height: 15px;
+    padding:15px 0px 5px 0px;
+    float:left;
+    color:#777;
+    text-transform: uppercase;
+}
+
+/* ----- Breakout ----- */
+
+.breakoutTables table tr td:first-child {
+    width:120px;
+}
+
+/* =======================================
+
+	3. Meaningful Use Custom Styles
+
+======================================= */
+
+.physician_dashboard  .meaningful_use_detail thead th,
+.physician_dashboard  .meaningful_use_detail tr td {
+    font-size: 12px;
+    border:none;
+}
+.physician_dashboard  .meaningful_use_detail thead th {
+    line-height: 13px;
+    font-size: 11px;
+    text-align:center;
+}
+.physician_dashboard  .meaningful_use_detail tr td.pass {
+    background: #bde7ae;
+    color: #31621f;
+}
+.physician_dashboard  .meaningful_use_detail tr td.fail {
+    background: #d47e7d;
+    color:#703a3b;
+}
+.physician_dashboard  .meaningful_use_detail tr td span.pass_all {
+    background:url(../images/checkmark.png);
+    width:17px;
+    height:17px;
+    display: block;
+    margin: 0px auto;
+}
+.physician_dashboard  .meaningful_use_detail tr td span.fail_all {
+    background:url(../images/delete.png);
+    width:17px;
+    height:17px;
+    display: block;
+    margin: 0px auto;
+}
+.physician_dashboard .section .em {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding:15px;
+}
+.physician_dashboard .section .em h6 {
+    font-size:15px;
+    margin:0;
+    padding:0;
+}
+.physician_dashboard .section .em p {
+    font-size:12px;
+    margin:0;
+    padding:0;
+}
+.selectGroup,
+.selectSection,
+.selectProvider,
+.selectPeriod,
+.selectRegistration,
+.dashboardSelect {
+    width:100%;
+    max-width:100%;
+    margin:0 0 10px 0;
+}
+.update_btn {
+    text-shadow: none;
+}
+
+/* =======================================
+
+	4. New Dashboard Creation
+
+======================================= */
+
+ul#available_metrics {
+    margin:0px;
+    float:left;
+    width: 100%;
+    height: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-top:1px solid #ddd;
+}
+ul#available_metrics li.header {
+    font-weight:bold;
+    padding: 0px;
+    background-color:#f5f5f5;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+ul#available_metrics li.header span.header {
+    padding: 20px 10px;
+    display:block;
+    color:#40667a;
+    font-size:11px;
+    border-bottom:1px solid #ddd;
+}
+ul#available_metrics ul {
+    margin:0px;
+}
+ul#available_metrics ul li {
+    display: inline-block;
+    padding: 0px;
+    font-size: 11px;
+    color: #777;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width:100%;
+    text-align: left;
+    vertical-align: middle;
+    background-color: #fff;
+    border-bottom: 1px solid #DDD;
+    text-transform:none;
+}
+ul#available_metrics ul li:hover,
+ul#available_metrics ul li.active {
+    color: #fff;
+    background-color: #40667a;
+}
+ul#available_metrics ul li input {
+    margin: 14px 10px 0 10px;
+    float: left;
+}
+ul#available_metrics ul li span {
+    padding: 10px 0 10px 0;
+    float: left;
+    font-weight: normal;
+    max-width:80%;
+}
+ul#available_metrics ul li div span.name {
+    float:left;
+}
+ul#available_metrics ul li div span.drag_box {
+    float:right;
+    border-left:1px solid #ddd;
+    color:#777;
+    font-size: 15px;
+}
+ul#available_metrics li,
+ul#dashboard_metrics li {
+    list-style: none;
+}
+ul#dashboard_metrics {
+    border:2px dashed #CCC;
+    margin:0px;
+    height: 500px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 30px;
+    overflow: scroll;
+}
+ul#dashboard_metrics li {
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+    border: 1px solid #DDD;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    width:45%;
+    height: 250px;
+    background:#f5f5f5;
+}
+ul#dashboard_metrics li.placeholder {
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+    border: 1px solid #DDD;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    width:45%;
+    height: 250px;
+    background:#f5f5f5;
+}
+.large_input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width:100%;
+}
+
+/* ----- Gridster ----- */
+
+.gridster {
+    border: 2px dashed #CCC;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.gridster .gs_w	{
+    background-color: #fff;
+    border: none;
+    -moz-box-shadow: 1px 1px 2px #CCC;
+    -webkit-box-shadow: 1px 1px 2px #CCC;
+    box-shadow: 1px 1px 2px #CCC;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.gridster .gs_w p.trash {
+    text-align:right;
+    color:#bbb;
+    font-size:14px;
+    float:right;
+    padding:15px 20px;
+    cursor: pointer;
+}
+.gridster .gs_w p.trash:hover {
+    color:#40667A;
+}
+a.create {
+    padding:10px 30px;
+    float:left;
+    margin:15px 0px;
+}
+
+/* ----- Module Selects ----- */
+
+.gridster .gs_w .selectContainer {
+    margin:0px auto;
+    width:100%;
+}
+
+.gridster .gs_w label.select {
+    font-size: 13px;
+    color:#777;
+    float:none;
+    text-align:right;
+    margin-top: 7px;
+    margin-right:3px;
+}
+
+/*Overrides for Dashboard Editor*/
+.gridster .selectContainer .bootstrap-select:not([class*=span]):not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+    width: 150px;
+}
+
+.gridster .bootstrap-select.btn-group:not(.input-group-btn), .bootstrap-select.btn-group[class*=span], .bootstrap-select.btn-group[class*=col-] {
+    margin-bottom: 0px;
+}
+
+.gridster .gs_w select {
+    float:left;
+    margin:0 0 0 5px;
+}
+
+/* ----- Filter Selects ----- */
+
+.dashboard_select {
+    width:100%;
+    max-width:100%;
+    margin:5px 0;
+}
+
+.filters .chosen-container {
+    margin:5px 0;
+}
+
+/* =======================================
+
+	5. Buttons
+
+======================================= */
+
+.dashButton {
+    width:100%;
+    padding:10px 0;
+    margin-bottom:5px;
+}
+
+.filterActions {
+    width:100%;
+    text-align: center;
+    padding-bottom:10px;
+}
+
+.filterActions a {
+    font-size:11px;
+    color:#999;
+    cursor: pointer;
+}
+
+#deleteFilter {
+    border-left:1px solid #ddd;
+    padding-left:9px;
+    margin-left: 5px;
+}
+
+.expandTable {
+    float:right;
+    width:100%;
+    padding:0px;
+    border:none;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    border-bottom:1px solid #ddd;
+    border-top:1px solid #ddd;
+    margin-bottom:10px;
+}
+
+.module_header .moduleFunction_expand {
+    float:right;
+    margin:15px 20px 0 0;
+}
+.module_header .moduleFunction_display {
+    float:right;
+    margin:15px 10px 0 0;
+}
+.module_header .moduleFunction_breakout {
+    margin:12px 10px 0 0;
+    float:right;
+}
+
+button.expandTable {
+    margin-bottom: 0px;
+}
+
+/* =======================================
+
+	6. Carousel
+
+======================================= */
+
+.jcarousel {
+    position: relative;
+    overflow: hidden;
+}
+.jcarousel ul.jcarouselContainer {
+    width:2000em;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.jcarousel > ul.jcarouselContainer:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.jcarousel ul.jcarouselContainer li.moduleView {
+    float: left;
+    height:100%;
+}
+
+/* ----- Carousel Pagination ----- */
+
+.jcarousel-pagination {
+    float:left;
+    margin:-9px 0 10px 20px;
+    display: none;
+}
+.jcarousel-pagination a {
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    height: 7px;
+    width: 7px;
+    line-height: 7px;
+    background: #ccc;
+    color: #4E443C;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    text-indent: -9999px;
+    margin-right: 7px;
+}
+
+.jcarousel-pagination a.active,
+.jcarousel-pagination a:hover {
+    background: #40667A;
+    color: #fff;
+    opacity: 1;
+}
+
+
+/* =======================================
+
+	7. Bootstrap Overides
+
+======================================= */
+
+.module_header > .span9 {
+    float: left;
+    width: 77%
+}
+.module_header > .span3 {
+    float: right;
+    width: 19%
+}
+@media(max-width: 979px) {
+    .row-fluid .span6 {
+        width: 100%;
+        margin-left: 0px;
+    }
+}
+input#namedFilter.form-control {
+    width:400px;
+    margin:0px;
+    padding:10px
+}
+.physician_dashboard .module_header div .btn-group.open {
+    text-align:right;
+}
+
+.saveFilter{
+    overflow-y: hidden;
+}
+
+.module_subHeader ul.dropdown-menu {
+    min-width:150px;
+    text-align:right;
+}
+
+.affix {
+    top:67px;
+}
+
+.affix-bottom {
+    position: absolute;
+    bottom: 152px;
+}
+
+.well {
+    background-color: #fff;
+    border: none;
+    -moz-box-shadow: 1px 1px 2px #CCC;
+    -webkit-box-shadow: 1px 1px 2px #CCC;
+    box-shadow: 0px 0px 2px #ddd;
+    border:2px solid #ddd;
+}
+
+
+/* =======================================
+
+	8. Nav
+
+======================================= */
+.taskBar {
+    margin-top:11px;
+}
+
+
+.taskBar a.text {
+    color:#40667a;
+    font-size:12px;
+    font-weight:bold;
+    float:left;
+    margin:7px 20px 0 0;
+}
+.taskBar a.text:hover {
+    color:#40667a;
+}
+.taskBar label {
+    color:#40667a;
+    font-size:12px;
+    float:left;
+    margin:7px 10px 0 10px;
+    font-weight:normal;
+}
+.taskBar #CreateBtn {
+    margin-left:0px;
+    padding-left:20px;
+    border-left:1px solid #eee;
+    margin-right:0px;
+}
+.taskBar #DeleteBtn {
+    padding-left:20px;
+}
+span.or {
+    background-color: white;
+    position: relative;
+    top: -0.99em;
+    color:#999;
+    font-size:12px;
+    padding:0 5px;
+    font-style:italic;
+}
+.taskBarContainer {
+    background: #fff;
+    padding:15px 20px 5px 20px;
+    border-bottom:3px solid #f5f5f5;
+}
+.dashboardPopover {
+    width:180px;
+    left:0px;
+}
+
+/* =======================================
+
+	9. Chosen Overides
+
+======================================= */
+
+.filters .chosen-container-single .chosen-single {
+    height: 21px;
+    line-height: 20px;
+}
+
+.filters .chosen-container-single .chosen-single div b {
+    background: url('../images/chosen-sprite.png') no-repeat 0px -2px;
+}
+
+.heatmapMetrics_chosen {
+    text-align: left;
+    margin:10px 0 10px 15px;
+}
+.dashboard_select .dropdown-menu,
+.chosen-client .dropdown-menu {
+    left: 0px;
+    right: auto;
+}
+
+/* =======================================
+
+	10. Inputs
+
+======================================= */
+
+input.heatmapThreshold {
+    width:70px;
+    margin:10px 0 10px 5px;
+    padding:5px;
+}
+
+.taskBar .dropdown-menu {
+    left: 0px;
+    right: auto;
+}
+
+.dashboardMetricContainer .input-prepend {
+    margin: 1px 5px 0px 5px;
+    float:left;
+}
+
+.dashboardMetricContainer .add-on {
+    border:1px solid #ddd;
+    background:rgba(255,255,255,0.6);
+    font-size:11px;
+    padding:3px 5px;
+    color: #555;
+}
+
+input.datefilter {
+    font-size:11px;
+    font-weight:bold;
+    width:55px;
+    text-align:center;
+    cursor:pointer;
+    border:1px solid #ddd;
+    margin:0 0 3px 0;
+    /* clear styles */
+    background:rgba(255,255,255,0.6);
+    color: #555;
+    padding:3px 5px 3px 3px;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
+    -webkit-border-radius:0px 4px 4px 0px;
+    -moz-border-radius:0px 4px 4px 0px;
+    border-radius:0px 4px 4px 0px;
+}
+
+input.datefilter:focus {
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
+}
+
+/* =======================================
+
+	11. User List
+
+======================================= */
+
+ul.userList {
+    list-style: none;
+    width:100%;
+    display:block;
+    margin:0px;
+}
+ul.userList li {
+    border-top:1px solid #eee;
+    padding:10px;
+}
+ul.userList li:hover {
+    background:#f5f5f5;
+}
+ul.userList li .avatar {
+    -webkit-border-radius:20px;
+    -moz-border-radius:20px;
+    border-radius:20px;
+}
+ul.userList li h5,
+ul.userList li p {
+    margin:0px;
+    padding:0 0 0 10px;
+}
+ul.userList li p {
+    font-size:12px;
+    color:#777;
+}
+
+/* =======================================
+
+	12. Flat Styles
+
+======================================= */
+
+.container-fluid.taskBarContainer {
+    background: #fff;
+    padding: 0px 20px 1px 20px!important;
+    border-bottom: 1px solid #ddd!important;
+    box-shadow: none!important;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom {
+    box-shadow: none;
+}
+
+.btn-group > .btn:first-child {
+    border-bottom-left-radius: 2px!important;
+    border-top-left-radius: 2px!important;
+}
+
+.btn-group button:last-of-type,.btn-group > .btn:last-child, .btn-group > .dropdown-toggle {
+    border-top-right-radius: 2px !important;
+    border-bottom-right-radius: 2px !important;
+}
+
+.btn-small {
+    border-radius: 2px!important;
+}
+
+#currentFilterStatus.lead {
+    margin-bottom: 10px!important;
+    margin-top: -2px!important;
+    float:left;
+    color:#555;
+}
+
+.taskBarContainer {
+    background: #fff!important;
+    padding: 15px 20px 5px 20px!important;
+    border-bottom: 1px solid #ddd!important;
+}
+
+.row-fluid .well {
+    box-shadow: none!important;
+    border: 1px solid #ddd!important;
+}
+
+button.selectpicker,.btn {
+    border:1px solid #ddd!important;
+    border-radius:4px;
+}
+
+#dashboardSubmit.dashButton, #saveFilter.btn {
+    border: 0!important;
+}
+
+div#dashboardFooter {
+    border-top: 1px solid #ddd;
+}
+
+.btn,button.selectpicker {
+    box-shadow:none!important;
+    box-shadow:inset 0 1px 0 rgba(255, 255, 255, 1)!important;
+}
+
+.nav a.btn.dropdown-toggle {
+    border: 0!important;
+    box-shadow: none!important;
+}
+
+#dashboardSubmit.dashButton.btn-success:hover {
+    box-shadow: inset 0,0,5px,rgba(0,0,0,0.5)!important;
+}
+
+.heatmap-progress .bar.dataRiverYellow,
+.heatmap-progress .bar.dataRiverOrange {
+    border-radius:0;
+}
+
+.heatmap-progress .bar.dataRiverGreen {
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+}
+
+.heatmap-progress .bar.dataRiverRed {
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+}
+
+.barChartMarker {
+    border-left: 2px solid #333;
+    display: inline-block;
+    float: left;
+    position: relative;
+    top: -20px;
+    height: 20px;
+}
+
+/* top-stacked, smaller arrow */
+.barChartMarker:before {
+    position:absolute;
+    content:"";
+    width:auto;
+    height:0px;
+    border-top: 5px solid #333;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent;
+    top:0;
+    right:-4px;
+}
+
+/* arrow which acts as a background shadow */
+.barChartMarker:after {
+    position:absolute;
+    content:"";
+    width:auto;
+    height:0px;
+    border-top: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #333;
+    border-left: 5px solid transparent;
+    bottom:0;
+    right:-4px;
+}
+
+.progress.heatmap-progress {
+    height: 20px;
+    margin-top: 2px;
+}
+
+.progress.heatmap-progress .bar {
+    box-shadow:none;
+}
+
+/* Cross-browser gradient. To edit, visit http://www.colorzilla.com/gradient-editor/ */
+.progress.heatmap-progress .gradient {
+    background: #a1c785; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ExYzc4NSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIwJSIgc3RvcC1jb2xvcj0iI2U2ZDYzZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQwJSIgc3RvcC1jb2xvcj0iI2Q4YTk0OCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijc1JSIgc3RvcC1jb2xvcj0iI2M0NWU1ZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(left,  #a1c785 0%, #e6d63d 20%, #d8a948 40%, #c45e5e 75%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#a1c785), color-stop(20%,#e6d63d), color-stop(40%,#d8a948), color-stop(75%,#c45e5e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #a1c785 0%,#e6d63d 20%,#d8a948 40%,#c45e5e 75%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #a1c785 0%,#e6d63d 20%,#d8a948 40%,#c45e5e 75%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #a1c785 0%,#e6d63d 20%,#d8a948 40%,#c45e5e 75%); /* IE10+ */
+    background: linear-gradient(to right,  #a1c785 0%,#e6d63d 20%,#d8a948 40%,#c45e5e 75%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a1c785', endColorstr='#c45e5e',GradientType=1 ); /* IE6-8 */
+}
+
+.summaryTable tbody tr.learn-more-row,
+.summaryTable tbody tr.learn-more-row:hover {
+    background:none;
+}
+
+.learn-more-row a:hover {
+    text-decoration:none;
+    text-decoration:underline;
+}
+
+.row-fluid .section.well.span6 {
+    min-height:250px;
+}
+
+/* Charge Lag Errors need to be reversed */
+#Charge_LagBudget .percent_up,
+#Charge_LagBenchmark .percent_up {
+    color:#C87474;
+}
+
+#Charge_LagBudget .percent_down,
+#Charge_LagBenchmark .percent_down {
+    color:#A1C785;
+}
+
+.filterSelectDropdown {
+    max-height:51px;
+    height:51px;
+}
+.compatibilitySelectWrap {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    max-height: 400px;
+    overflow: auto;
+    margin-bottom: 10px;
+    min-height: 40px;
+    padding: 5px 0;
+    width: 99%;
+    display:none;
+    position: relative;
+    z-index: 99;
+    background: #fff;
+    max-width: 99.1%;
+    width: 99.1%;
+    margin-top:1px;
+}
+
+.compatibilitySelectWrap input[type="checkbox"] {
+    float: right;
+    height: 18px;
+    width: 18px;
+    margin-top: 2px;
+    box-shadow: none;
+}
+
+.compatibilitySelectWrap label {
+    padding: 5px 10px;
+    margin-bottom:1px;
+}
+
+.compatibilitySelect label {
+    text-transform: none;
+    line-height: 20px;
+    font-size: 11px;
+    color: #777;
+    cursor: pointer;
+}
+
+.compatibilitySelect label:hover,
+.compatibilitySelect label:active,
+.compatibilitySelect label input:hover+label,
+.compatibilitySelect label input:active+label {
+    background: #40667a;
+    color:#fff;
+}
+
+button.compatibilitySelectButton {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 0 15px;
+    line-height: 30px;
+    border: 1px solid #cecece;
+    background-clip: padding-box;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='whiteff', endColorstr='#FFE6E6e6', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 5px 5px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 5px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 3px 5px rgba(0, 0, 0, 0.05);
+    color: #40667A;
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 700;
+    font-size: 11px;
+    width:100%;
+    max-width:100%;
+    text-align:left;
+}
+.compatibilitySelectButton .caret {
+    display: inline-block;
+    width: 0;
+    vertical-align: top;
+    border-top: 5px solid #888;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    content: "";
+    background: none;
+    margin-top: 12px;
+    display: inline-block!important;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    margin-top: -2px;
+    vertical-align: middle;
+}
+.compatibilitySelectButton .filter-option {
+    width:85%;
+    overflow:hidden;
+}
+.compatibilitySelectWrap .actionsbox {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 3px!important;
+    padding: 5px 10px 10px;
+}
+.compatibilitySelectWrap .actionsbox span {
+    font-size: 11px!important;
+    font-weight: bold;
+    padding: 5px 2.25%;
+    width: 50%;
+    max-width: 45%;
+}
+.compatibilitySelectButton span {
+    float:left;
+}
+.compatibilitySelectButton span + span {
+    float:right;
+    font-size:14px;
+    position:absolute;
+    top:0;
+    right:15px;
+}
+
+table.filterTable {
+    float: right;
+    display: inline-block;
+    width: auto;
+    margin-top: -5px;
+}
+
+.filterTable tr td {
+    padding: 3px 0px 3px 10px;
+}
+
+.filterTable input {
+    padding: 4px 8px;
+    background:none;
+}
+
+.ui-datepicker-div {
+    margin-left: -125px;
+}
+
+button#dateSubmit {
+    padding: 3px 8px;
+    float: right;
+    display: inline-block;
+    width: auto;
+    position: relative;
+    top: -2px;
+    box-shadow: none!important;
+    border: 0!important;
+    margin-left: 7px;
+}
+
+.filterSelectDropdown p {
+    min-height: 20px;
+}
+
+.btn-group ul.dropdown-menu li.selected a {
+    background: none;
+    color: #777;
+}
+.btn-group ul.dropdown-menu li a:hover,
+.btn-group ul.dropdown-menu li.selected a:hover {
+    background:#40667A;
+    color:#fff;
+}
+
+div.physician_dashboard {
+    clear:both;
+}
+
+div#CapacityBenchmark_chart {
+    min-width: 500px;
+    overflow-x: scroll;
+}
+
+/* Fix for modal header in IE11 */
+
+.modal-header {
+    max-width:100%;
+}
+
+/* All Responsive Styles for Mobile */
+@media (max-width: 980px) {
+
+    /* TASKBAR FOR DASHBOARDS */
+    .container-fluid.container_margin.taskBarContainer {
+        margin-top: 20px!important;
+        padding-bottom: 20px!important;
+        padding-top: 7px!important;
+        text-align:center;
+    }
+    #currentFilterStatus.lead {
+        text-align:center;
+        clear:both;
+    }
+    .container-fluid.container_margin.taskBarContainer button.selectpicker {
+        padding: 5px 15px 0;
+        line-height: 25px;
+    }
+    .container-fluid.container_margin.taskBarContainer .pull-left {
+        float:none;
+        margin-right:0!important;
+    }
+    .taskBar #FilterBtn {
+        margin: 10px auto 0;
+        float: none;
+        display: block;
+        clear: both;
+    }
+    div#dashboardSharing {
+        float: none;
+        clear: both;
+        display: block;
+        margin: 10px auto;
+        text-align: center;
+    }
+    .taskBar a#CreateBtn {
+        border-right: 0;
+        float:none;
+        padding-left:10px;
+        padding-right:5px;
+    }
+
+    /* FILTERS */
+    div#selectDataFilter {
+        padding-top: 20px;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    div#createDataFilter {
+        width: 100%;
+        margin: 20px 0;
+        padding: 0;
+        border-left: 0;
+    }
+    #dataFilters div.filterSelectDropdown {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        padding-bottom: 10px;
+    }
+    table.filterTable {
+        float:none;
+        margin-top:0;
+    }
+    table.filterTable td p:first-child {
+        display: none;
+    }
+    button#dateSubmit {
+        float:none;
+        top:-10px;
+    }
+    .container-fluid.dashboardMetricContainer {
+        text-align: center;
+    }
+    div#dashboardFooter {
+        border: 0;
+        background: none;
+        margin-top: -20px;
+        margin-bottom:-20px;
+    }
+    #dashboardFooter p.pull-left {
+        display: none;
+    }
+    #dashboardFooter .pull-right {
+        float:none;
+    }
+    .row-fluid .section.well.span6 {
+        width: 100%!important;
+        margin: 0 0 20px!important;
+    }
+    .span12.taskBar {
+        padding-bottom: 25px;
+    }
+    .container-fluid.container_margin.taskBarContainer {
+        padding-bottom: 0px!important;
+    }
+    .filterActions {
+        float:none;
+        padding-bottom:40px;
+        padding-top:5px;
+    }
+    #dashboardSubmit.dashButton, #saveFilter.btn {
+        width: 100%;
+        margin: 0;
+        padding: 9px 0;
+        margin-bottom: 20px;
+    }
+    #dashboardSubmit {
+        width:100%;
+        margin:0;
+        float:none;
+    }
+    .btn.chartFunctions {
+        display:none;
+    }
+    .btn-group .btn.chartFunctions {
+        display:inline-block;
+    }
+    .physician_dashboard .btn-group {
+        display:inline-block;
+        float:none!important;
+        margin-top:0!important;
+    }
+    .physician_dashboard .btn.chartFunctions {
+        float:none!important;
+        margin-bottom: 10px!important;
+        margin-top: 0!important;
+    }
+    .moduleView table, .moduleView tbody {
+        display:block;
+        overflow:auto;
+    }
+    .physician_dashboard .section.well {
+        height:auto!important;
+    }
+    .module_subHeader .btn-group {
+        display:none;
+    }
+}
+
+/* All Responsive Styles for Phone Size Only! */
+@media (max-width: 480px) {
+    #dashboardControls,
+    #CreateBtn,
+    #ExcelPivot,
+    #dashboardSharing .ExpandBtn
+    {
+        display:none;
+    }
+    a#ShareModal {
+        border-radius: 2px 0 0 2px;
+    }
+    #PDFExport {
+        border-radius: 0 2px 2px 0;
+    }
+    #dashboardControls .btn,
+    #dashboardSharing .btn {
+        padding: 5px 2.3%!important;
+        width: 45%;
+        line-height:25px;
+    }
+    div#dashboardSharing {
+        margin-top:0;
+    }
+    button#FilterBtn {
+        width: 100%;
+        max-width: 100%;
+        line-height: 25px;
+    }
+    #FilterBtn i.fa.fa-caret-down {
+        display: none;
+    }
+    #taskBar button.selectpicker {
+        line-height:25px!important;
+    }
+    div#ShareModal {
+        left: 0!important;
+        margin-left: auto!important;
+        max-width: 90%!important;
+        padding: 5%!important;
+        height:auto!important;
+    }
+    div#ShareModal .usersTable td {
+        display: block;
+        width: 100%;
+    }
+    div#ShareModal .modal-body {
+        padding:7%;
+        clear:both;
+    }
+    .jcarousel ul.jcarouselContainer li.moduleView.scrollable {
+        overflow-x:scroll;
+    }
+}
+
+/*
+    11. Live Dashboard Editing
+*/
+
+.pill-accordian, .pill-accordian ul {
+    overflow-y:hidden;
+    overflow-x:auto;
+}
+.drawerOrganizer input[type="text"] {
+    float:right;
+    width:150px;
+}
+.drawerOrganizer ul.nav-pills {
+    float:left;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.drawerOrganizer ul.nav-pills>li>a {
+    display:inline-block;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bolder;
+}
+.pill-accordian .child {
+    display:none;
+    float: right!important;
+    border-top: 1px solid rgba(64, 102, 122, 0.9);
+    border-bottom: 1px solid rgba(64, 102, 122, 0.9);
+    padding-top:1px;
+    padding-bottom:1px;
+    margin-top:2px;
+    background: rgba(170, 170, 170, 0.20);
+    margin-bottom:0px;
+}
+.pill-accordian .child:last-child {
+    border-right:1px solid rgba(64, 102, 122, 0.9);
+    border-radius: 0px 5px 5px 0px;
+}
+/*Bootstrap Override for Pill Color*/
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+    color: #ffffff;
+    background-color: rgba(64, 102, 122,1);
+}
+
+.nav-pills .child .active > a, .nav-pills .child .active > a:hover, .nav-pills .child .active > a:focus {
+    color: #fff;
+    background: rgba(1, 1, 1, 0.25);
+}
+
+.child > li > a {
+    padding-top:4px;
+    padding-bottom:4px
+}
+
+.drawerContents {
+    width:100%;
+    border-top: 1px solid #d3d3d3;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    height: 170px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#metricToolbox {
+    position: relative;
+}
+
+#metricToolbox .rightArrow{
+    position: absolute;
+    right: 0px;
+    bottom: 62px;
+}
+
+#metricToolbox .leftArrow{
+    position: absolute;
+    left: 0px;
+    bottom: 62px;
+    display:none;
+}
+
+#metricToolbox .leftArrow a, #metricToolbox .rightArrow a {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+#metricToolbox .leftArrow a:hover, #metricToolbox .rightArrow a:hover, #metricToolbox .leftArrow a:active, #metricToolbox .rightArrow a:active {
+    color: rgba(64, 102, 122,0.9);
+}
+
+.drawerCategory {
+    margin-right:10px;
+    display:inline-block;
+    height: 220px;
+    max-height:220px;
+    max-width:1000%;
+}
+.drawerCategory > h5 {
+    font-weight:normal;
+    color: #999;
+    font-size: 14px;
+    text-transform:uppercase;
+    white-space:nowrap;
+    margin-bottom: 2px;
+}
+
+.metric-pill {
+    height:48px;
+    width:182px;
+    border:dotted 1px #eee;
+    margin:5px;
+    padding:3px;
+    border-radius:5px;
+    cursor:move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    float:left;
+    display:inline-block;
+}
+.metric-icon {
+    background: rgb(64, 102, 122);
+    border: rgb(64, 102, 122) 1px solid;
+    border-radius:3px;
+    color:#fff;
+    width:47px;
+    height:47px;
+    margin-right:5px;
+    float:left;
+    text-align:center;
+    line-height: 58px;
+}
+.metric-pill h5 {
+    margin-top:2px;
+    white-space: normal;
+    font-size: 10.5px;
+    text-transform: uppercase;
+}
+
+.mt-CategoryHide {
+    display: none;
+}
+
+.drawerContents.showAll .mt-CategoryHide {
+    display:inline-block;
+}
+
+.dashboard-name-warning>span {
+    margin-left: 5px;
+    padding: 2px 5px;
+    color: rgb(228, 115, 115)!important;
+}
+
+.dashboard-name-warning > input[type=text] {
+    border: #e47373 solid 1px!important;
+}
+
+.dropabletarget {
+    border: dashed #ccc 2px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin-top: 10px;
+}
+.cardBack {
+    background: white;
+    border: 0;
+    padding: 0px;
+    height: 272px;
+    box-shadow: 1px 1px 2px #ccc;
+}
+
+.card-placeholder {
+    height: 292px;
+    background: rgba(75, 75, 75, 0.2);
+    display: block;
+    float: left;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.metric-holder {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.cardBack-Left {
+    display:inline-block;
+    width:33%;
+    float:left;
+    height: 270px;
+    border-right: 1px solid #ddd;
+    cursor: move!important;
+}
+.cardBack-Left .metric-icon {
+    float:none;
+    display: inline-block;
+    margin-left: -24px;
+    margin-top:  100px;
+    margin-bottom: 10px;
+}
+.cardBack-Options {
+    display: inline-block;
+    float: left;
+    width: 67%;
+    overflow: wrap;
+    white-space: nowrap;
+    margin-right: -2px;
+}
+
+.cardBack-Options td {
+    padding: 10px 10px 0 10px!important;
+}
+
+.cardBack-Options {
+    display: inline-block;
+    float: left;
+    width: 67%;
+    overflow: wrap;
+    white-space: nowrap;
+    margin-right: -2px;
+}
+
+div#editorControls button {
+    box-shadow: none!important;
+    border: none!important;
+    padding: 10px 30px;
+}
+
+#editorControls span {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.01em!important;
+    color: #999;
+    display: inline-block;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.7);
+}
+
+i.fa.fa-trash-o.fa-2x {
+    color: /*#C87474*/rgba(162, 64, 64,0.7);
+    font-size: 20px;
+}
+
+i.fa.fa-trash-o.fa-2x:hover {
+    color: rgba(162, 64, 64,1);
+}
+
+input#txtDashboardName {
+    padding: 10px;
+    margin-bottom: 3px;
+    border: 1px solid #ddd;
+    box-shadow: none;
+    margin-left: 5px;
+}
+
+.cardBack-Left .trash {
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.cardBack-Options table.table {
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.metricCard.dragCard .cardBack-Left {
+    width: 100%;
+    border-right: none;
+}
+
+.metricCard.dragCard {
+    z-index: 9999;
+}
+
+.metricCard.dragCard .cardBack-Left .metric-icon {
+    margin-top: 100px;
+}
+
+.metric-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.80);
+    z-index: 99999;
+}
+
+.metric-overlay:before {
+    content: '';
+    display: inline-block;
+    height: 200px;
+    text-align: center;
+}
+
+.metric-overlay i {
+    color: rgb(64, 102, 122);
+}
+
+.metric-overlay-text {
+    position: relative;
+    text-align: center;
+}
+
+.metric-overlay-text h5 {
+    text-align: center;
+    display: block;
+    color: rgb(120, 120, 120);
+    text-transform: uppercase;
+}
+
+.dashboardEditor-Backlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.dashboardEditor-Backlay:before {
+    content: '';
+    display: inline-block;
+    height: 178px;
+    text-align: center;
+}
+
+.dashboardEditor-Backlay i {
+    color: rgb(64, 102, 122);
+}
+
+.dashboardEditor-Backlay-text {
+    position: relative;
+    text-align: center;
+}
+
+.dashboardEditor-Backlay-text h5 {
+    text-align: center;
+    display: block;
+    color: rgb(120, 120, 120);
+    text-transform: uppercase;
+}
+
+.metric-pill {
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    height:30px;
+    padding:10px;
+    background: #f3f3f3;
+}
+.metric-icon {
+    width: 25px;
+    height: 25px;
+    background: none;
+    border: 0;
+    border-radius: 0px;
+    color: rgba(64, 102, 122,0.7);
+    line-height:1;
+}
+.metric-icon .fa-2x {
+    font-size: 20px;
+    margin-top: 5px;
+}
+.drawerContents {
+    border-top: 1px solid #eee;
+}
+.metric-pill h5 {
+    color: #888;
+    font-weight: normal;
+    line-height: 1.2;
+}
+.metric-pill:hover h5 {
+    color: #444;
+}
+.metric-pill:hover .metric-icon {
+    color: rgba(64, 102, 122,1);
+}
+.drawerContents.showAll .mt-CategoryHide {
+    font-size: 12px;
+    margin-left: 7px;
+}
+
+.edit-metrics.metric-holder li.span6 {
+    margin: 10px 1%;
+    height: 272px;
+    width: 47.9876%;
+}
+
+.edit-metrics.metric-holder li.span12 {
+    margin: 10px 1%;
+    height: 272px;
+    width: 97.9876%;
+}
+
+.edit-metrics.metric-holder {
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+
+.row-fluid .metric-holder .span6 {
+    width: 50%;
+    margin: 0;
+}
+.row-fluid .metric-holder .span12 {
+    width: 100%;
+    margin: 0;
+}
+.physician_dashboard {
+    margin-left: -0.5%;
+    margin-right: -0.5%;
+    position:relative;
+}
+.row-fluid .edit-metrics.metric-holder .span6 .section.well {
+    margin: 0 1% 12px!important;
+    width: 98%;
+}.physician_dashboard
+ .row-fluid .edit-metrics.metric-holder .span12 .section.well {
+     margin: 0 0.5% 12px!important;
+     width: 99%;
+ }
+.row-fluid .metric-holder .span6 .section.well {
+    margin: 0 1.25% 18px!important;
+    width: 97%;
+}
+.row-fluid .metric-holder .span12 .section.well {
+    margin: 0 0.65% 18px!important;
+    width: 98.5%;
+}
+
+.btn-group.bootstrap-select.heatmapMetrics {
+    margin: 0px 3px 0px 10px;
+}
+
+.heatmapMetrics ul.dropdown-menu.inner.selectpicker {
+    text-align: left;
+}
+
+.bootstrap-select li.selected {
+    background-color: #ccc;
+}
+
+.bootstrap-select li.selected.active {
+    color: white;
+    background: #40667A!important;
+}
+
+.ui-draggable, .edit-metrics .ui-sortable-handle {
+    -ms-touch-action: none;
+}
+
+.metric-pill .tooltip-inner {
+    white-space: normal!important;
+}
+
+.dashboard-name-create > input[type=text] {
+    border: #85d384 solid 1px!important;
+}
+
+.dashboard-name-create>span {
+    margin-left: 5px;
+    padding: 2px 5px;
+    color: #4FB045!important;
+}
+
+.drawerNoResults {
+    text-align: center;
+    margin-top: 65px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #ccc;
+    letter-spacing: 0.09em;
+    font-size: 14px;
+}
+.drawerNoResults i {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+#metricholder.metric-holder > li.span6 {
+    /*height:336px;
+    max-height:336px;*/
+}
+#metricholder.metric-holder > .span6 .section.well {
+    /*height:318px;
+    max-height:318px;*/
+}
+#metricholder > li.span6 li.moduleView {
+    /*height:250px;
+    max-height:250px;*/
+    min-height: 270px;
+}
+#metricholder > li.span6 li.moduleView .highcharts-wrapper {
+    min-height:230px;
+}
+[data-charts="chartStackedBarCapacity"] li.moduleView.scrollable,
+{
+    max-height: 210px;
+}
+#metricholder > li.span6 [data-metricname="Payer_Mix"] li.moduleView,
+div#pieDish,
+div#pieDish .highcharts-container {
+    height:270px!important;
+    max-height: 270px!important;
+}
+/*
+div#pieDish .highcharts-container {
+  height: 245px!important;
+}
+*/
+#Encounter_Level_Charge_Lag_Top_10Benchmark li.moduleView,
+#Charge_Lag_Top_10Benchmark li.moduleView {
+    max-height: 250px;
+    overflow-y: auto;
+}
+[data-charts="chartSimplePie"] li.moduleView {
+    max-height: 250px;
+}
+[data-metricname="Charge_Lag_by_Location_Office"] table,
+[data-metricname="Charge_Lag_by_Location_Hospital"] table {
+    min-height:242px;
+}
+[data-metricname="Charge_Lag_by_Location_Office"] table td,
+[data-metricname="Charge_Lag_by_Location_Hospital"] table td {
+    padding-top: 0!important;
+    vertical-align: middle;
+    padding: 0 20px!important;
+}
+#metricholder li.moduleView .condensed h1 {
+    font-weight: normal;
+    color: #40667a;
+    padding: 57px 20px 37px 20px;
+}
+#Encounter_Level_Charge_Lag_Top_10Benchmark_table .progress,
+#Charge_Lag_Top_10Benchmark_table .progress {
+    height: 6px;
+    padding-top: 8px;
+}
+.physician_dashboard .section #Charge_Lag_Top_10Benchmark_table.summaryTable tr td,
+.physician_dashboard .section #Encounter_Level_Charge_Lag_Top_10Benchmark_table.summaryTable tr td {
+    font-size: 11px;
+}
+div[data-metricname="Charge_Lag_Distribution"] table.summaryTable.listSummaryTable tr td,
+div[data-metricname="Charge_Lag_by_Location_Hospital"] table.summaryTable.listSummaryTable tr td {
+    padding: 10px 20px!important;
+}
+div[data-metricname="Charge_Lag_Distribution"] table.summaryTable.listSummaryTable {
+    margin-top:10px;
+}
+.table.summaryTable.listSummaryTable.compressed th,
+.table.summaryTable.listSummaryTable.compressed td {
+    padding: 0px 20px!important;
+    text-align:left!important;
+    border-bottom:0;
+
+}
+.table.summaryTable.listSummaryTable.compressed th {
+    font-weight: bold!important;
+    padding:10px 20px 2px!important;
+}
+.span6 li.moduleView .condensed {
+    min-height: 270px;
+}
+
+.flip .front{
+
+    -moz-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+}
+
+.flip .back{
+
+    -moz-transform: rotateX(0);
+    -ms-transform: rotateX(0);
+    -o-transform: rotateX(0);
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+}
+
+.flip {
+    -webkit-transition: 1.6s;
+    -moz-transition: 1.6s;
+    -o-transition: 1.6s;
+    transition: 1.6s;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.front {
+    z-index: 2;
+
+    -moz-transform: rotateX(0);
+    -ms-transform: rotateX(0);
+    -o-transform: rotateX(0);
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+}
+
+.back {
+    -moz-transform: rotateX(-180deg);
+    -ms-transform: rotateX(-180deg);
+    -o-transform: rotateX(-180deg);
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+}
+
+.front, .back {
+
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transition: 0.8s;
+    -o-transition: 0.8s;
+    -moz-transition: 0.8s;
+    transition: 0.8s;
+
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.metricCard{
+    position:relative;
+}
+
+.metric-holder{
+
+    -moz-perspective: 3000px;
+    -webkit-perspective: 3000px;
+    -ms-perspective: 3000px;
+    perspective: 3000px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    position:relative;
+}
+
+.edit-metrics .metricCard.flipping>div,
+.sla-chart .flipping>div {
+    position: absolute;
+    width: 100%;
+}
+
+#pa-data-range .mrp-container{
+    display:inline-block;
+}
+
+#pa-data-range .mrp-monthdisplay{
+    padding: 0px 12px 0px 8px;
+}
+
+#pa-data-range .mrp-icon{
+    font-size: 12px;
+    padding: 9px 11px 8px 9px;
+}

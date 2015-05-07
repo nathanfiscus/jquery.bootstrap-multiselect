@@ -1,0 +1,108 @@
+/**
+ * Created by Nathan on 5/6/2015.
+ */
+
+.multiselect input[type=checkbox]:checked ~ i {
+    background-position: -288px 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../images/glyphicons-halflings.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 15px;
+    margin-top: 2.5px;
+}
+
+.multiselect>li:hover>i {
+    background-image: url("../images/glyphicons-halflings-white.png");
+}
+
+.multiselect li:hover {
+    background: #40667A;
+    color: #fff;
+    cursor:pointer;
+}
+
+.multiselect .divider:hover {
+    background-color: transparent;
+    cursor:default;
+}
+
+.multiselect .dropdown-header:hover {
+    background-color: transparent;
+    color: #333;
+    cursor:default;
+}
+
+.multiselect .divider {
+    height: 1px;
+    padding: 0px;
+    line-height:auto;
+}
+
+.multiselect li {
+    display: block;
+    clear: both;
+    font-weight: 400;
+    color: #777;
+    font-size:11px;
+    padding: 5px 20px 5px 15px;
+    white-space: normal;
+    text-align: left;
+}
+
+.multiselect li input[type='checkbox'] {
+    float: right;
+}
+
+.bms-searchbox {
+    padding: 4px 8px;
+}
+
+.bms-actionsbox{padding:4px 8px}
+.actions-btn {
+    width: 50%;
+    font-size: 11px!important;
+    font-weight: bold;
+}
+.bms-actionsbox {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 3px!important;
+}
+.multiselect .bms-actionsbox{float:left;width:100%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+.multiselect.bms-actionsbox .btn-group button{width:50%}
+.multiselect-searchbox+.bms-actionsbox{padding:0 8px 4px}
+
+.btn-multiselect {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    text-align: left;
+}
+
+.multiselect-container .btn .caret {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    margin-top: -2px;
+    vertical-align: middle;
+}
+
+.multiselect {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.multiselect input[type="text"] {
+    width:100%;
+}
+
+.ms-hide {
+    display: none !important;
+}
