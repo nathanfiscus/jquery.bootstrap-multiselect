@@ -19006,9 +19006,10 @@
 </div>
 <script>
     $('.multiselect').multiselect().on("multiselect.open", function () {
-        console.log("open:" + $(this).attr('id'))
+        console.log("open:" + $(this).attr('id'));
     }).on("multiselect.close", function () {
-        console.log("closed:" + $(this).attr('id'))
+        console.log("closed:" + $(this).attr('id'));
+        $(this).multiselect("updateItems",{1:{text:"Test", value : "1", checked:true},2:{text:"Test 2", value : "1", checked:true}})
     });
 </script>
 </body>

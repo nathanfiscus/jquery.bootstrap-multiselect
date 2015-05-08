@@ -71,14 +71,20 @@ jQuery.expr[":"].icontains = jQuery.expr.createPseudo(function (arg) {
     //Global Items array
     $.fn.multiselect.items = [];
 
+
+
     //Object Initialization
     methods.init = function (_options) {
         var options = $.extend({}, defaultOptions, _options);
         return this.each(function () {
             var $me = $(this);
+
+            $me.data("multiselect-options",options);
+            $me.data("multiselect-data",{selected:0,total:0});
+
             var title = "";
-            var totalItemCount = 0;
             var totalSelectedItemCount = 0;
+            var totalItemCount = 0;
             var searchbox = options.liveSearch ? '<div class="bms-searchbox" style=""><input type="text" class="input-block-level form-control" autocomplete="off" style="margin-bottom: 0px;"/></div>' : '';
             var actionsbox = options.actionsBox ? '<div class="bms-actionsbox">' +
                                                     '<div class="btn-group btn-block">' +
@@ -146,6 +152,8 @@ jQuery.expr[":"].icontains = jQuery.expr.createPseudo(function (arg) {
                 title += '<span class="caret"></span>';
             $btn.html(title);
 
+            $me.data("multiselect-data",{selected:totalSelectedItemCount,total:totalItemCount});
+
             $btn.on("click", function(e){
                 $btn.clicked = true;
                 if($btn.data("status") == "closed"){
@@ -162,13 +170,17 @@ jQuery.expr[":"].icontains = jQuery.expr.createPseudo(function (arg) {
                 e.stopPropagation();
             });
 
-            $('li input[type="checkbox"]',$me).on("click",function(e) {
+            $me.on("click",'li input[type="checkbox"]',function(e) {
                 e.stopPropagation();
             });
 
-            $('li',$me).on("click",function(e){
+            $me.on("click", "li", function(e){
                 e.preventDefault();
                 e.stopPropagation();
+
+                totalSelectedItemCount = $me.data("multiselect-data").selected;
+                totalItemCount = $me.data("multiselect-data").total;
+
                 var $t = $(this);
                 var $chk = $('input[type="checkbox"]',$t);
                 var dropID = parseInt($me.data("multiselect-id"));
@@ -196,6 +208,8 @@ jQuery.expr[":"].icontains = jQuery.expr.createPseudo(function (arg) {
                     title += '<span class="caret"></span>';
                 }
                 $btn.html(title);
+
+                $me.data("multiselect-data",{selected:totalSelectedItemCount,total:totalItemCount});
             });
 
 
@@ -241,6 +255,8 @@ jQuery.expr[":"].icontains = jQuery.expr.createPseudo(function (arg) {
             if (options.actionsBox) {
                 //Select All Button
                 $('.bms-select-all', $me).on('click', function () {
+                    totalSelectedItemCount = $me.data("multiselect-data").selected;
+                    totalItemCount = $me.data("multiselect-data").total;
                     var newunselected;
                     if(totalItemCount == totalSelectedItemCount){
                         if (options.liveSearch && options.keepSearchFocus){
@@ -277,9 +293,13 @@ jQuery.expr[":"].icontains = jQuery.expr.createPseudo(function (arg) {
                         title += '<span class="caret"></span>';
                     }
                     $btn.html(title);
+
+                    $me.data("multiselect-data",{selected:totalSelectedItemCount,total:totalItemCount});
                 });
                 //Unselect All Button
                 $('.bms-deselect-all', $me).on('click', function () {
+                    totalSelectedItemCount = $me.data("multiselect-data").selected;
+                    totalItemCount = $me.data("multiselect-data").total;
                     var newunselected;
                     if(0 == totalSelectedItemCount){
                         if (options.liveSearch && options.keepSearchFocus){
@@ -316,6 +336,8 @@ jQuery.expr[":"].icontains = jQuery.expr.createPseudo(function (arg) {
                         title += '<span class="caret"></span>';
                     }
                     $btn.html(title);
+
+                    $me.data("multiselect-data",{selected:totalSelectedItemCount,total:totalItemCount});
                 });
 
             }
@@ -374,6 +396,46 @@ jQuery.expr[":"].icontains = jQuery.expr.createPseudo(function (arg) {
     methods.destroy = function(){
         var $me = $(this);
         delete $.fn.multiselect._closers[parseInt($me.data("multiselectid"))];
+    }
+
+    methods.updateItems = function(json){
+        var $me = $(this);
+        var options = $me.data("multiselect-options");
+        var dropID = parseInt($me.data("multiselect-id"));
+        var title = "";
+        var $btn = $('.btn-multiselect[data-multiselect="'+ $me.attr('id') + '"]');
+        var totalSelectedItemCount = 0;
+        var totalItemCount = 0;
+        $.fn.multiselect.items[dropID] = [];
+        var html = "";
+        for (var key in json){
+
+            html +="<li data-ms-index=" + totalItemCount +">" + json[key].text + '<input type="checkbox" id="' + json[key].value + '" value="' + json[key].value +'" ' + (json[key].checked ? " checked" : "") + '/><i></i></li>';
+
+            if(json[key].checked){
+                totalSelectedItemCount++;
+            }
+            $.fn.multiselect.items[dropID].push(json[key]);
+            totalItemCount++;
+        }
+
+        $me.children('li').remove();
+        $me.append(html);
+
+        //Update Title
+        if (totalSelectedItemCount > 0) {
+            var tr8nText = (typeof options.countSelectedText === 'function') ? options.countSelectedText(totalSelectedItemCount, totalItemCount) : options.countSelectedText;
+            title = tr8nText.replace('{0}', totalSelectedItemCount.toString()).replace('{1}', totalItemCount.toString());
+        } else {
+            title = options.noneSelectedText;
+        }
+        //title = htmlEscape(title);
+        if (options.showCaret) {
+            title += '<span class="caret"></span>';
+        }
+        $btn.html(title);
+
+        $me.data("multiselect-data",{selected:totalSelectedItemCount,total:totalItemCount});
     }
 
 

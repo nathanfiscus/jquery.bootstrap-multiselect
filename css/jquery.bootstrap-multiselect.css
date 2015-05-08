@@ -106,3 +106,7 @@
 .ms-hide {
     display: none !important;
 }
+
+.multiselect input[type="checkbox"]{
+    display:none !important;
+}
